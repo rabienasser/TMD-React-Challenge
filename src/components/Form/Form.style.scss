@@ -1,0 +1,50 @@
+@import "App.scss";
+
+form {
+   @include flex;
+   width: 100%;
+   margin: 30px 0;
+
+   @media (max-width: 450px) {
+      @include flex($direction: column);
+      margin: 20px 0;
+   }
+
+   input,
+   button {
+      margin: 0 10px;
+   }
+
+   input {
+      background-color: transparent;
+      color: white;
+      font-size: 20px;
+      border: none;
+      border-bottom: 2px solid whitesmoke;
+      border-radius: 0;
+      width: 250px;
+
+      &:focus {
+         outline: none;
+         border-bottom: 2px solid $secondColor;
+      }
+   }
+
+   button {
+      background: $secondColor;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s background ease;
+
+      &:hover {
+         background: $thirdColor;
+      }
+
+      @media (max-width: 450px) {
+         margin-top: 20px;
+      }
+   }
+}

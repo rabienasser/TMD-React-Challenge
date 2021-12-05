@@ -1,4 +1,5 @@
 import React from "react";
+import "./Weather.style.scss";
 
 const Weather = ({ data }) => {
    const getWeatherIcon = (id) => {

@@ -1,0 +1,28 @@
+@import "App.scss";
+
+.city-list {
+   @include flex;
+   margin-bottom: 30px;
+   flex-wrap: wrap;
+
+   div {
+      @include flex;
+      margin: 0 10px;
+
+      li {
+         padding: 5px 5px;
+         cursor: pointer;
+
+         &:hover {
+            color: $secondColor;
+            transition: 0.3s color ease;
+         }
+      }
+      button {
+         color: red;
+         background: transparent;
+         border: none;
+         cursor: pointer;
+      }
+   }
+}

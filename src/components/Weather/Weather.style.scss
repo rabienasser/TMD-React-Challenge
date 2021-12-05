@@ -1,0 +1,36 @@
+@import "App.scss";
+
+.weather {
+   @include flex($direction: column, $justify: center);
+   * {
+      margin-bottom: 10px;
+   }
+
+   .city-details {
+      @include flex;
+      * {
+         margin: 0 10px;
+      }
+
+      @media (max-width: 450px) {
+         @include flex($direction: column);
+      }
+   }
+
+   .weather-lists {
+      @include flex;
+
+      @media (max-width: 350px) {
+         @include flex($direction: column);
+      }
+
+      ul {
+         @include flex($direction: column);
+         margin: 10px 20px;
+
+         li {
+            padding: 5px 0;
+         }
+      }
+   }
+}

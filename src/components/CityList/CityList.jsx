@@ -2,9 +2,10 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { fetchCity } from "store/weatherSlice";
 import { deleteCity } from "store/cityListSlice";
+import "./CityList.style.scss";
 
 const CityList = ({ cityList }) => {
-   const dispatch = useDispatch;
+   const dispatch = useDispatch();
    return (
       <ul className="city-list">
          {cityList?.map((city, idx) => (

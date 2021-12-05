@@ -1,26 +1,19 @@
 import axios from "axios";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const timestamp = new Date().toISOString();
-
-const config = {
-   headers: {
-      Timestamp: timestamp,
-   },
-};
-
 export const fetchHomeCity = createAsyncThunk(
    "weather/fetchHomeCity",
    async (coords) => {
       const { lat, long } = coords;
       try {
+         const timestamp = new Date().toISOString();
          const { data } = await axios.get(
-            `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=imperial&appid=${process.env.REACT_APP_API_KEY}`
+            `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=imperial&appid=${process.env.REACT_APP_API_KEY}`,
+            { headers: { Timestamp: timestamp } }
          );
-         console.log(data);
          return data;
       } catch (err) {
-         console.log(err);
+         alert(err);
       }
    }
 );
@@ -32,18 +25,16 @@ export const fetchCity = createAsyncThunk(
          const { data } = await axios.get(
             `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=imperial&appid=${process.env.REACT_APP_API_KEY}`
          );
-         console.log(data);
          return data;
       } catch (err) {
-         console.log(err);
+         alert("Please enter valid city!");
       }
    }
 );
 
 const initialState = {
-   weatherData: {},
    loading: false,
-   error: false,
+   weatherData: {},
 };
 
 const weatherSlice = createSlice({
@@ -59,7 +50,6 @@ const weatherSlice = createSlice({
       },
       [fetchHomeCity.rejected]: (state) => {
          state.loading = false;
-         state.error = true;
       },
       [fetchCity.pending]: (state) => {
          state.loading = true;
@@ -70,7 +60,6 @@ const weatherSlice = createSlice({
       },
       [fetchCity.rejected]: (state) => {
          state.loading = false;
-         state.error = true;
       },
    },
 });

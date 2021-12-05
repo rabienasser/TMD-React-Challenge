@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { fetchCity } from "store/weatherSlice";
 import { addCity } from "store/cityListSlice";
+import "./Form.style.scss";
 
 const Form = ({ cityList }) => {
    const [city, setCity] = useState("");
