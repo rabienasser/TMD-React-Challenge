@@ -8,8 +8,8 @@ export const fetchHomeCity = createAsyncThunk(
       try {
          const timestamp = new Date().toISOString();
          const { data } = await axios.get(
-            `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=imperial&appid=${process.env.REACT_APP_API_KEY}`,
-            { headers: { Timestamp: timestamp } }
+            `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=imperial&appid=${process.env.REACT_APP_API_KEY}`
+            // { headers: { Timestamp: timestamp } }
          );
          return data;
       } catch (err) {
