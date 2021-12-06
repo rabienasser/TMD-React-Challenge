@@ -28,3 +28,11 @@ $thirdColor: #ff595b;
 ul {
    list-style: none;
 }
+
+.toast {
+   background: $thirdColor;
+   color: white;
+}
+.toast-progress {
+   background: white;
+}

@@ -1,9 +1,11 @@
 import { useEffect } from "react";
+import { ToastContainer } from "react-toastify";
 import { fetchHomeCity } from "store/weatherSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Form from "components/Form/Form";
 import CityList from "components/CityList/CityList";
 import Weather from "components/Weather/Weather";
+import "react-toastify/dist/ReactToastify.css";
 import "App.scss";
 
 const App = () => {
@@ -13,9 +15,9 @@ const App = () => {
 
    const getCoords = () => {
       navigator.geolocation.getCurrentPosition((position) => {
-         let lat = position.coords.latitude;
-         let long = position.coords.longitude;
-         dispatch(fetchHomeCity({ lat: lat, long: long }));
+         const lat = position.coords.latitude;
+         const long = position.coords.longitude;
+         dispatch(fetchHomeCity({ lat, long }));
       });
    };
 
@@ -25,10 +27,12 @@ const App = () => {
 
    return (
       <div className="App">
-         {loading && <h1>Loading...</h1>}
+         <ToastContainer />
          <Form cityList={cityList} />
          <CityList cityList={cityList} />
-         {weatherData !== undefined && <Weather data={weatherData} />}
+         {weatherData !== undefined && (
+            <Weather data={weatherData} loading={loading} />
+         )}
       </div>
    );
 };

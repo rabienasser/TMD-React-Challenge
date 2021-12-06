@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { alert } from "utils";
 
 export const fetchHomeCity = createAsyncThunk(
    "weather/fetchHomeCity",
